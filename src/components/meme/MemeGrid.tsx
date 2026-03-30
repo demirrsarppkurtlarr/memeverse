@@ -39,7 +39,7 @@ export function MemeGrid({ params }: MemeGridProps) {
     if (!sentinel) return;
 
     const observer = new IntersectionObserver(handleIntersect, {
-      rootMargin: "300px",
+      rootMargin: "800px",
     });
     observer.observe(sentinel);
     return () => observer.disconnect();

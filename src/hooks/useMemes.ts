@@ -42,7 +42,6 @@ function buildPageUrl(pageIndex: number, params: MemesQueryParams, seed: string)
 }
 
 export function useMemes(params: MemesQueryParams) {
-  const MAX_RENDER = 30;
   const randomSeed =
     typeof window !== "undefined"
       ? `day-${new Date().toISOString().slice(0, 10)}`
@@ -59,10 +58,8 @@ export function useMemes(params: MemesQueryParams) {
       revalidateOnFocus: false,
     });
 
-  const allMemes = data ? data.flatMap((page) => page?.items ?? []) : [];
-  const memes = allMemes.slice(0, MAX_RENDER);
-  const hasMoreFromApi = data ? data[data.length - 1]?.hasMore ?? false : false;
-  const hasMore = memes.length < MAX_RENDER && hasMoreFromApi;
+  const memes = data ? data.flatMap((page) => page?.items ?? []) : [];
+  const hasMore = data ? data[data.length - 1]?.hasMore ?? false : false;
   const total = data?.[0]?.total ?? 0;
 
   return {
