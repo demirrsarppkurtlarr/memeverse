@@ -1,5 +1,4 @@
 const path = require("path");
-// Projenin ana dizinine çıkıp .env dosyasını hedef alıyoruz
 const ROOT = path.join(__dirname, "..", ".."); 
 const dotEnvPath = path.join(ROOT, ".env");
 require('dotenv').config({ path: dotEnvPath });
@@ -9,7 +8,6 @@ const { createClient } = require('@supabase/supabase-js');
 const logger = require("./logger");
 const { tagTitle } = require("./tagging");
 
-// .env dosyanızdaki tam isimleri kullanıyoruz 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL, 
   process.env.SUPABASE_SERVICE_ROLE_KEY
@@ -18,47 +16,51 @@ const supabase = createClient(
 const DATA_FILE = path.join(ROOT, "data", "memes.json");
 
 function stableLmId(dedupeKey) {
-  return `lm_${dedupeKey}`;
+  return `lm_${dedupeKey || Math.random().toString(36).slice(2, 11)}`;
 }
 
-/**
- * Memeleri hem Supabase'e hem de yerel JSON'a kaydeder.
- */
 async function saveMemes(incomingRanked) {
-  // 1. Verileri Supabase Formatına Hazırla
-  const records = incomingRanked.map((p) => ({
-    id: stableLmId(p.dedupeKey),
-    title: p.title,
-    url: p.mediaUrl,
-    media_type: p.type || "image",
-    source: p.subreddit || "reddit",
-    score: p.score || 1,
-    tags: tagTitle(p.title),
-    created_at: new Date((p.created_utc || Date.now()/1000) * 1000).toISOString(),
-    reddit_url: p.permalink,
-    upvotes: p.ups || 0,
-    comments: p.num_comments || 0,
-    is_active: true
-  }));
+  // Hata önleyici: incomingRanked dizi değilse durdur
+  if (!Array.isArray(incomingRanked)) {
+    console.error("Hata: Gelen veriler dizi formatında değil.");
+    return;
+  }
+
+  const records = incomingRanked.map((p) => {
+    // Tarih objesini güvenli oluştur
+    const timestamp = p.created_utc ? p.created_utc * 1000 : Date.now();
+    const safeDate = new Date(timestamp).toISOString();
+
+    return {
+      id: stableLmId(p.dedupeKey),
+      title: p.title || "Untitled Meme",
+      url: p.mediaUrl || "",
+      media_type: p.type || "image",
+      source: p.subreddit || "reddit",
+      score: Number(p.score) || 1,
+      tags: Array.isArray(tagTitle(p.title)) ? tagTitle(p.title) : [],
+      created_at: safeDate,
+      reddit_url: p.permalink || "",
+      upvotes: Number(p.ups) || 0,
+      comments: Number(p.num_comments) || 0,
+      is_active: true
+    };
+  });
 
   try {
-    if (records.length === 0) {
-      console.log("Kaydedilecek yeni meme bulunamadı.");
-      return;
-    }
+    if (records.length === 0) return;
 
     console.log(`Supabase'e ${records.length} meme gönderiliyor...`);
 
-    // 2. Supabase'e Yaz (UPSERT: Eğer ID varsa güncelle, yoksa yeni ekle)
     const { error } = await supabase
       .from('memes') 
       .upsert(records, { onConflict: 'id' });
 
     if (error) throw error;
 
-    logger.info(`Supabase Senkronizasyonu Başarılı: ${records.length} kayıt işlendi.`);
+    logger.info(`Başarılı: ${records.length} kayıt işlendi.`);
 
-    // 3. Yerel Dosyayı da Güncelle (Yedek/Lokal görüntüleme amaçlı)
+    // Yerel dosya yazma işlemini de sağlama alalım
     if (!fs.existsSync(path.join(ROOT, "data"))) {
         fs.mkdirSync(path.join(ROOT, "data"), { recursive: true });
     }
@@ -69,11 +71,8 @@ async function saveMemes(incomingRanked) {
         memes: records.slice(0, 50) 
     }, null, 2));
 
-    console.log(`Yerel dosya güncellendi: ${DATA_FILE}`);
-
   } catch (error) {
-    logger.error("Kaydetme Hatası:", error.message);
-    console.error("Detaylı Hata:", error);
+    console.error("Detaylı Hata:", error.message);
   }
 }
 
