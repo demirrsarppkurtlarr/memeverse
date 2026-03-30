@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-03-30T16:07:01.939Z",
+  "updatedAt": "2026-03-30T16:08:01.450Z",
   "memes": [
     {
       "id": "lm_23047f09e0f355e0d645",
@@ -8,13 +8,13 @@
       "url": "https://i.redd.it/ob4xpmix8zrg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 53247.3,
+      "score": 53245.2,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T12:23:12.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6to9e/me_irl/",
-      "upvotes": 74229,
+      "upvotes": 74226,
       "comments": 4290,
       "is_active": true
     },
@@ -24,13 +24,13 @@
       "url": "https://i.redd.it/fzpy63s1kyrg1.png",
       "media_type": "image",
       "source": "memes",
-      "score": 38742.1,
+      "score": 38753.3,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T10:04:01.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s6r5kz/feel_like_a_clown/",
-      "upvotes": 55090,
+      "upvotes": 55106,
       "comments": 597,
       "is_active": true
     },
@@ -40,13 +40,13 @@
       "url": "https://v.redd.it/jg02s0ebvxrg1/CMAF_1080.mp4?source=fallback",
       "media_type": "video",
       "source": "funny",
-      "score": 35660,
+      "score": 35669.8,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T07:45:09.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s6oydd/dont_touch_it/",
-      "upvotes": 50654,
+      "upvotes": 50668,
       "comments": 674,
       "is_active": true
     },
@@ -56,13 +56,13 @@
       "url": "https://i.redd.it/trx5yvei3vrg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 35020.1,
+      "score": 35025,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-28T22:25:42.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6dxxp/me_irl/",
-      "upvotes": 49943,
+      "upvotes": 49950,
       "comments": 200,
       "is_active": true
     },
@@ -88,13 +88,13 @@
       "url": "https://v.redd.it/3fnyd36x40sg1/CMAF_720.mp4?source=fallback",
       "media_type": "video",
       "source": "funny",
-      "score": 20966.5,
+      "score": 20985.4,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T15:22:34.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s6xy24/stealing/",
-      "upvotes": 29848,
+      "upvotes": 29875,
       "comments": 243,
       "is_active": true
     },
@@ -104,13 +104,13 @@
       "url": "https://i.redd.it/gquxwa4o5rrg1.jpeg",
       "media_type": "image",
       "source": "funny",
-      "score": 20861.3,
+      "score": 20860.6,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-28T09:10:40.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s5vjhe/im_sure_that_degree_will_come_in_handy_for_the_job/",
-      "upvotes": 29702,
+      "upvotes": 29701,
       "comments": 233,
       "is_active": true
     },
@@ -120,13 +120,13 @@
       "url": "https://i.redd.it/tctsk5c2hvng1.png",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 16202.3,
+      "score": 16208.6,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-08T19:25:55.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rodvbl/strategy_100/",
-      "upvotes": 23108,
+      "upvotes": 23117,
       "comments": 89,
       "is_active": true
     },
@@ -136,13 +136,13 @@
       "url": "https://i.redd.it/n0zehvto11pg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 15353.8,
+      "score": 15352.4,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-14T15:13:46.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rtlxne/finally_after_all_these_years_a_happy_ending/",
-      "upvotes": 21916,
+      "upvotes": 21914,
       "comments": 42,
       "is_active": true
     },
@@ -152,13 +152,13 @@
       "url": "https://i.redd.it/llzd2yrwx6qg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 15346.1,
+      "score": 15348.2,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-20T12:07:27.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1ryuh54/taking_a_nap_oc/",
-      "upvotes": 21908,
+      "upvotes": 21911,
       "comments": 35,
       "is_active": true
     },
@@ -184,13 +184,13 @@
       "url": "https://i.redd.it/zba5ularv1sg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 14229,
+      "score": 14222.7,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T21:14:46.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s777hf/im_so_tired/",
-      "upvotes": 20145,
+      "upvotes": 20136,
       "comments": 425,
       "is_active": true
     },
@@ -200,14 +200,14 @@
       "url": "https://v.redd.it/zs14vribrtrg1/CMAF_270.mp4?source=fallback",
       "media_type": "video",
       "source": "funny",
-      "score": 14211.4,
+      "score": 14213.1,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-28T17:55:35.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s67752/whats_his_rap_name/",
-      "upvotes": 19435,
-      "comments": 2023,
+      "upvotes": 19437,
+      "comments": 2024,
       "is_active": true
     },
     {
@@ -216,13 +216,13 @@
       "url": "https://i.redd.it/aqqqgqe6uzrg1.png",
       "media_type": "image",
       "source": "me_irl",
-      "score": 12440.2,
+      "score": 12442.3,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T14:22:21.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6webb/me_irl/",
-      "upvotes": 17530,
+      "upvotes": 17533,
       "comments": 564,
       "is_active": true
     },
@@ -232,13 +232,13 @@
       "url": "https://i.redd.it/uuccwinp1frg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 12251.2,
+      "score": 12249.8,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-26T16:27:24.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1s4caex/being_heard_is_its_own_love_language/",
-      "upvotes": 17470,
+      "upvotes": 17468,
       "comments": 74,
       "is_active": true
     },
@@ -248,14 +248,14 @@
       "url": "https://i.redd.it/23x31v2sl5sg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 12038.7,
+      "score": 12109,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-30T09:46:12.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s7m13t/me_irl/",
-      "upvotes": 16365,
-      "comments": 1944,
+      "upvotes": 16462,
+      "comments": 1952,
       "is_active": true
     },
     {
@@ -264,13 +264,13 @@
       "url": "https://i.redd.it/kgfhwk88oalg1.png",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 11984.5,
+      "score": 11981.7,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-02-23T19:29:43.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rcr9ek/we_all_agree_that_punch_deserved_protection_lets/",
-      "upvotes": 17077,
+      "upvotes": 17073,
       "comments": 102,
       "is_active": true
     },
@@ -280,13 +280,13 @@
       "url": "https://i.redd.it/9eiwcjzlcsrg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 11317.5,
+      "score": 11318.9,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-28T13:11:23.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1s5zyvl/not_you_oc/",
-      "upvotes": 16158,
+      "upvotes": 16160,
       "comments": 23,
       "is_active": true
     },
@@ -296,13 +296,13 @@
       "url": "https://i.redd.it/te1vofbzk5sg1.png",
       "media_type": "image",
       "source": "me_irl",
-      "score": 10894.5,
+      "score": 10923.2,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-30T09:41:29.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s7lyfw/me_irl/",
-      "upvotes": 15528,
+      "upvotes": 15569,
       "comments": 83,
       "is_active": true
     },
@@ -312,13 +312,13 @@
       "url": "https://i.redd.it/1iahr794fzrg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 10875.8,
+      "score": 10872.3,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T12:58:14.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s6uf2u/my_thoughts/",
-      "upvotes": 15506,
+      "upvotes": 15501,
       "comments": 72,
       "is_active": true
     },
@@ -328,13 +328,13 @@
       "url": "https://i.redd.it/ia5era1vi0sg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 10589.4,
+      "score": 10591.5,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T16:40:39.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s6zzwv/what_even_is_job_security/",
-      "upvotes": 15099,
+      "upvotes": 15102,
       "comments": 67,
       "is_active": true
     },
@@ -344,13 +344,13 @@
       "url": "https://i.redd.it/47r9236trmrg1.gif",
       "media_type": "gif",
       "source": "dankmemes",
-      "score": 10431.2,
+      "score": 10424.2,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-27T18:25:59.000Z",
       "reddit_url": "https://www.reddit.com/r/dankmemes/comments/1s5ccop/brilliant_suggestion/",
-      "upvotes": 14885,
+      "upvotes": 14875,
       "comments": 39,
       "is_active": true
     },
@@ -360,13 +360,13 @@
       "url": "https://i.redd.it/cgnb7d0uwsqg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 10253.3,
+      "score": 10256.1,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-23T14:00:36.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1s1homy/turns_me_into_her_golden_retriever_instantly/",
-      "upvotes": 14630,
+      "upvotes": 14634,
       "comments": 41,
       "is_active": true
     },
@@ -376,13 +376,13 @@
       "url": "https://i.redd.it/5f4f9to2cfpg1.png",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 10141.8,
+      "score": 10139,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-16T15:17:23.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rvcau9/i_just_like_going_to_parties/",
-      "upvotes": 14451,
+      "upvotes": 14447,
       "comments": 87,
       "is_active": true
     },
@@ -392,13 +392,13 @@
       "url": "https://i.redd.it/ob8tyzzl2iqg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 10133.4,
+      "score": 10134.1,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-22T01:33:25.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1s08tss/is_your_girlfriend_sad/",
-      "upvotes": 14436,
+      "upvotes": 14437,
       "comments": 94,
       "is_active": true
     },
@@ -408,14 +408,14 @@
       "url": "https://v.redd.it/hny8z7h6p0sg1/CMAF_720.mp4?source=fallback",
       "media_type": "video",
       "source": "me_irl",
-      "score": 9877.7,
+      "score": 9880.8,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T17:16:05.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s70xe9/me_irl/",
-      "upvotes": 14006,
-      "comments": 245,
+      "upvotes": 14010,
+      "comments": 246,
       "is_active": true
     },
     {
@@ -424,14 +424,14 @@
       "url": "https://i.redd.it/kkumsungv2sg1.jpeg",
       "media_type": "image",
       "source": "funny",
-      "score": 9682,
+      "score": 9698.4,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-30T00:34:51.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s7by11/relations/",
-      "upvotes": 13804,
-      "comments": 64,
+      "upvotes": 13827,
+      "comments": 65,
       "is_active": true
     },
     {
@@ -456,13 +456,13 @@
       "url": "https://i.redd.it/690czrdqn0mg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 8460.7,
+      "score": 8465.6,
       "tags": [
         "funny"
       ],
       "created_at": "2026-02-27T10:45:55.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rg3fop/youre_doin_alright/",
-      "upvotes": 12058,
+      "upvotes": 12065,
       "comments": 67,
       "is_active": true
     },
@@ -472,13 +472,13 @@
       "url": "https://i.redd.it/8can4vqcx4sg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 8074.2,
+      "score": 8093.8,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-30T07:30:02.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s7jv82/some_will_be_ashamed_of_their_creation_others/",
-      "upvotes": 11460,
+      "upvotes": 11488,
       "comments": 174,
       "is_active": true
     },
@@ -504,13 +504,13 @@
       "url": "https://i.redd.it/tsqrv7vxc0sg1.jpeg",
       "media_type": "image",
       "source": "funny",
-      "score": 7385.5,
+      "score": 7392.5,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T16:07:27.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s6z4pi/oc_what_makes_you_smile/",
-      "upvotes": 10525,
+      "upvotes": 10535,
       "comments": 60,
       "is_active": true
     },
@@ -520,13 +520,13 @@
       "url": "https://v.redd.it/sev3xx3u01sg1/CMAF_270.mp4?source=fallback",
       "media_type": "video",
       "source": "memes",
-      "score": 7176.6,
+      "score": 7178.7,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T18:21:29.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s72ofq/im_done_for/",
-      "upvotes": 10197,
+      "upvotes": 10200,
       "comments": 129,
       "is_active": true
     },
@@ -536,13 +536,13 @@
       "url": "https://i.redd.it/4u22uyly91sg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 6964.7,
+      "score": 6974.5,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T19:12:33.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s74199/no_comrade_our_fries/",
-      "upvotes": 9932,
+      "upvotes": 9946,
       "comments": 41,
       "is_active": true
     },
@@ -552,13 +552,13 @@
       "url": "https://v.redd.it/14p94h25rxrg1/CMAF_1080.mp4?source=fallback",
       "media_type": "video",
       "source": "funny",
-      "score": 6010.1,
+      "score": 6007.3,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T07:21:44.000Z",
       "reddit_url": "https://www.reddit.com/r/funny/comments/1s6okrv/bee_sleeping_on_the_job/",
-      "upvotes": 8537,
+      "upvotes": 8533,
       "comments": 114,
       "is_active": true
     },
@@ -568,13 +568,13 @@
       "url": "https://i.redd.it/4tmn4szw30sg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 5973.9,
+      "score": 5978.8,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T15:16:53.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6xsnb/me_irl/",
-      "upvotes": 8511,
+      "upvotes": 8518,
       "comments": 54,
       "is_active": true
     },
@@ -584,13 +584,13 @@
       "url": "https://i.redd.it/w2ccs5b17zrg1.jpeg",
       "media_type": "image",
       "source": "dankmemes",
-      "score": 5595.3,
+      "score": 5596.7,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T12:12:42.000Z",
       "reddit_url": "https://www.reddit.com/r/dankmemes/comments/1s6tgme/should_we/",
-      "upvotes": 7959,
+      "upvotes": 7961,
       "comments": 80,
       "is_active": true
     },
@@ -600,13 +600,13 @@
       "url": "https://i.redd.it/b4y3bivlz1pg1.png",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 5591.4,
+      "score": 5593.5,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-14T18:23:53.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rtqskm/the_best_feeling_in_the_world_to_start_the_weekend/",
-      "upvotes": 7971,
+      "upvotes": 7974,
       "comments": 39,
       "is_active": true
     },
@@ -616,13 +616,13 @@
       "url": "https://i.redd.it/64071jaep0sg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 5362.7,
+      "score": 5369,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T17:17:23.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s70ylv/me_irl/",
-      "upvotes": 7634,
+      "upvotes": 7643,
       "comments": 63,
       "is_active": true
     },
@@ -632,13 +632,13 @@
       "url": "https://i.redd.it/1zx0394ravrg1.jpeg",
       "media_type": "image",
       "source": "dankmemes",
-      "score": 5225.1,
+      "score": 5217.4,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-28T23:06:20.000Z",
       "reddit_url": "https://www.reddit.com/r/dankmemes/comments/1s6evxu/caught_off_guard/",
-      "upvotes": 7440,
+      "upvotes": 7429,
       "comments": 57,
       "is_active": true
     },
@@ -648,13 +648,13 @@
       "url": "https://i.redd.it/8zwtzig9rvrg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 5103,
+      "score": 5105.8,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T00:38:50.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6gy8h/me_irl/",
-      "upvotes": 7251,
+      "upvotes": 7255,
       "comments": 91,
       "is_active": true
     },
@@ -664,13 +664,13 @@
       "url": "https://i.redd.it/ar01ooksyllg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 4992.5,
+      "score": 5002.3,
       "tags": [
         "funny"
       ],
       "created_at": "2026-02-25T13:52:58.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1redsnf/fathers_day/",
-      "upvotes": 7121,
+      "upvotes": 7135,
       "comments": 26,
       "is_active": true
     },
@@ -680,13 +680,13 @@
       "url": "https://i.redd.it/l3vgln2bazrg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 4947.9,
+      "score": 4955.6,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T12:30:55.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s6tu10/i_just_know_therell_be_some_fuckass_twist_if_i/",
-      "upvotes": 7047,
+      "upvotes": 7058,
       "comments": 50,
       "is_active": true
     },
@@ -696,13 +696,13 @@
       "url": "https://i.redd.it/bibwuvv4o2pg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 4682,
+      "score": 4680.6,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-14T20:41:24.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rtub1a/such_a_sweet_relationship/",
-      "upvotes": 6677,
+      "upvotes": 6675,
       "comments": 27,
       "is_active": true
     },
@@ -712,30 +712,14 @@
       "url": "https://i.redd.it/ok48uodmdxrg1.jpeg",
       "media_type": "image",
       "source": "me_irl",
-      "score": 4645.7,
+      "score": 4644.3,
       "tags": [
         "relatable"
       ],
       "created_at": "2026-03-29T06:05:56.000Z",
       "reddit_url": "https://www.reddit.com/r/me_irl/comments/1s6nc85/me_irl/",
-      "upvotes": 6590,
+      "upvotes": 6588,
       "comments": 109,
-      "is_active": true
-    },
-    {
-      "id": "lm_4eb966fd1f716bd24f32",
-      "title": "be stronger than your mind",
-      "url": "https://i.redd.it/2w1r93i62omg1.jpeg",
-      "media_type": "image",
-      "source": "wholesomememes",
-      "score": 4589.4,
-      "tags": [
-        "funny"
-      ],
-      "created_at": "2026-03-02T17:25:15.000Z",
-      "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1riz2pl/be_stronger_than_your_mind/",
-      "upvotes": 6534,
-      "comments": 52,
       "is_active": true
     },
     {
@@ -744,14 +728,30 @@
       "url": "https://i.redd.it/98rvfrnyquqg1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 4587.1,
+      "score": 4587.8,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-23T20:11:14.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1s1s2ci/wife_hugs/",
-      "upvotes": 6520,
+      "upvotes": 6521,
       "comments": 77,
+      "is_active": true
+    },
+    {
+      "id": "lm_4eb966fd1f716bd24f32",
+      "title": "be stronger than your mind",
+      "url": "https://i.redd.it/2w1r93i62omg1.jpeg",
+      "media_type": "image",
+      "source": "wholesomememes",
+      "score": 4586.6,
+      "tags": [
+        "funny"
+      ],
+      "created_at": "2026-03-02T17:25:15.000Z",
+      "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1riz2pl/be_stronger_than_your_mind/",
+      "upvotes": 6530,
+      "comments": 52,
       "is_active": true
     },
     {
@@ -760,13 +760,13 @@
       "url": "https://i.redd.it/3ffz4qd4mhog1.jpeg",
       "media_type": "image",
       "source": "wholesomememes",
-      "score": 4316.9,
+      "score": 4321.1,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-11T21:52:40.000Z",
       "reddit_url": "https://www.reddit.com/r/wholesomememes/comments/1rr7pii/happened_today/",
-      "upvotes": 6158,
+      "upvotes": 6164,
       "comments": 21,
       "is_active": true
     },
@@ -776,13 +776,13 @@
       "url": "https://i.redd.it/i5pqn89os1sg1.jpeg",
       "media_type": "image",
       "source": "memes",
-      "score": 4225.4,
+      "score": 4226.8,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T20:58:18.000Z",
       "reddit_url": "https://www.reddit.com/r/memes/comments/1s76scd/im_41_years_old/",
-      "upvotes": 6005,
+      "upvotes": 6007,
       "comments": 73,
       "is_active": true
     },
@@ -792,13 +792,13 @@
       "url": "https://i.redd.it/wxcd4ctia1sg1.jpeg",
       "media_type": "image",
       "source": "dankmemes",
-      "score": 4167.1,
+      "score": 4169.2,
       "tags": [
         "funny"
       ],
       "created_at": "2026-03-29T19:15:41.000Z",
       "reddit_url": "https://www.reddit.com/r/dankmemes/comments/1s74495/lemibehonustwichu/",
-      "upvotes": 5917,
+      "upvotes": 5920,
       "comments": 84,
       "is_active": true
     }
