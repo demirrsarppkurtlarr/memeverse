@@ -5,14 +5,13 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  
-  const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
-  const pageSize = Math.min(50, Math.max(1, parseInt(searchParams.get("pageSize") || "24", 10)));
-  const q = searchParams.get("q") || searchParams.get("search") || undefined;
-  const tag = searchParams.get("tag") || undefined;
-
   try {
+    const { searchParams } = new URL(request.url);
+    const page = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
+    const pageSize = Math.min(50, Math.max(1, parseInt(searchParams.get("pageSize") || "24", 10)));
+    const q = searchParams.get("q") || searchParams.get("search") || undefined;
+    const tag = searchParams.get("tag") || undefined;
+
     const supabase = await createClient();
 
     let query = supabase
@@ -32,15 +31,15 @@ export async function GET(request: NextRequest) {
 
     if (error) throw error;
 
-    // HATA ÖNLEYİCİ KATMAN:
-    // Gelen veride null olabilecek her şeyi burada toString() hatası vermeyecek hale getiriyoruz.
+    // HATA ÖNLEYİCİ: toString hatasını durdurmak için verileri önceden kontrol et
     const safeItems = (data || []).map((item) => ({
       ...item,
-      id: item.id ? item.id.toString() : Math.random().toString(36).substring(7),
+      // ID undefined ise toString() hata verir, bu yüzden fallback ekliyoruz
+      id: item.id ? item.id.toString() : `temp-${Math.random()}`,
       title: item.title || "Untitled Meme",
       url: item.url || "",
-      tags: Array.isArray(item.tags) ? item.tags : [],
-      created_at: item.created_at || new Date().toISOString()
+      tags: Array.isArray(item.tags) ? item.tags : [], // Tags her zaman bir dizi olmalı
+      media_type: item.media_type || "image"
     }));
 
     return NextResponse.json({
@@ -53,24 +52,9 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (e: any) {
-    console.error("API Error:", e.message);
+    console.error("API Hatası:", e.message);
     return NextResponse.json({
-      data: { items: [], total: 0, page, pageSize, hasMore: false },
+      data: { items: [], total: 0, page: 1, pageSize: 24, hasMore: false },
     });
   }
-}
-
-// POST fonksiyonun (Eğer varsa olduğu gibi kalabilir veya aşağıdakini kullanabilirsin)
-export async function POST(request: NextRequest) {
-    const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    try {
-        const body = await request.json();
-        const { data, error } = await supabase.from("memes").insert({ ...body, uploaded_by: user.id }).select().single();
-        if (error) throw error;
-        return NextResponse.json({ data }, { status: 201 });
-    } catch (err: any) {
-        return NextResponse.json({ error: err.message }, { status: 500 });
-    }
 }

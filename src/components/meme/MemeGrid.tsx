@@ -24,6 +24,7 @@ export function MemeGrid({ params }: MemeGridProps) {
     () => params,
     [params.category, params.mediaType, params.sort, params.search, params.tag, params.language, params.page, params.pageSize]
   );
+  
   const { memes, hasMore, isLoading, error, loadMore } = useMemes(stableParams);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const every = Math.max(0, ADS_CONFIG.rules.inFeedEvery || 0);
@@ -54,7 +55,7 @@ export function MemeGrid({ params }: MemeGridProps) {
       <div className="p-4">
         <div className="masonry">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="masonry-item">
+            <div key={`skeleton-${i}`} className="masonry-item">
               <SkeletonCard />
             </div>
           ))}
@@ -89,9 +90,12 @@ export function MemeGrid({ params }: MemeGridProps) {
     <div>
       <div className="masonry">
         {memes.flatMap((meme, i) => {
+          // HATA ÖNLEME: meme veya meme.id undefined ise toString() hatasını önlemek için güvenli bir key oluşturuyoruz
+          const safeKey = meme?.id?.toString() || `meme-idx-${i}`;
+          
           const blocks: React.ReactNode[] = [
             <div
-              key={meme.id}
+              key={safeKey}
               className="masonry-item animate-fade-in"
               style={{ animationDelay: `${(i % 8) * 40}ms` }}
             >
@@ -99,9 +103,9 @@ export function MemeGrid({ params }: MemeGridProps) {
             </div>,
           ];
 
-          // Insert an in-feed ad after every N memes (smart rule).
+          // Insert an in-feed ad after every N memes.
           if (every > 0 && (i + 1) % every === 0) {
-            blocks.push(<AdInFeed key={`ad-${i}`} index={i} />);
+            blocks.push(<AdInFeed key={`ad-${safeKey}-${i}`} index={i} />);
           }
           return blocks;
         })}
@@ -110,7 +114,7 @@ export function MemeGrid({ params }: MemeGridProps) {
       {isLoading && memes.length > 0 && (
         <div className="masonry mt-0">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="masonry-item">
+            <div key={`load-more-skeleton-${i}`} className="masonry-item">
               <SkeletonCard />
             </div>
           ))}
