@@ -5,10 +5,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatNumber(num: number): string {
-  if (num >= 1_000_000) return `${(num / 1_000_000).toFixed(1)}M`;
-  if (num >= 1_000) return `${(num / 1_000).toFixed(1)}K`;
-  return num.toString();
+export function formatNumber(num: number | null | undefined): string {
+  const safe = typeof num === "number" && Number.isFinite(num) ? num : 0;
+  if (safe >= 1_000_000) return `${(safe / 1_000_000).toFixed(1)}M`;
+  if (safe >= 1_000) return `${(safe / 1_000).toFixed(1)}K`;
+  return safe.toString();
 }
 
 export function formatDuration(ms: number): string {

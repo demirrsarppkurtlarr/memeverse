@@ -93,7 +93,12 @@ export function MemeGrid({ params }: MemeGridProps) {
             id: meme?.id?.toString?.() || i.toString(),
             title: meme?.title ?? "",
             url: meme?.url ?? "",
+            thumbnail_url: meme?.thumbnail_url ?? meme?.url ?? "",
+            media_type: meme?.media_type ?? "image",
             tags: Array.isArray(meme?.tags) ? meme.tags : [],
+            likes: typeof meme?.likes === "number" ? meme.likes : 0,
+            views: typeof meme?.views === "number" ? meme.views : 0,
+            created_at: meme?.created_at ?? new Date().toISOString(),
           };
 
           const blocks: React.ReactNode[] = [
