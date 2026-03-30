@@ -1,0 +1,15 @@
+name: Memeverse Scraper Cron
+
+on:
+  schedule:
+    # Her 10 dakikada bir çalışır
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Manuel test etmek için bu şart!
+
+jobs:
+  scrape_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: API'yi Tetikle
+        run: |
+          curl -X GET "memeverse-gamma.vercel.app/api/cron/scrape"
