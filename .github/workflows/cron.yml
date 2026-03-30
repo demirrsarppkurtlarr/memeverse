@@ -3,7 +3,7 @@ name: Memeverse Scraper Cron
 on:
   schedule:
     # Her 10 dakikada bir çalışır
-    - cron: '*/10 * * * *'
+    - cron: '*/3 * * * *'
   workflow_dispatch: # Manuel test etmek için bu şart!
 
 jobs:
