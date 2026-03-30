@@ -1,15 +1,14 @@
-name: Memeverse Scraper Cron
+import { NextResponse } from "next/server";
 
-on:
-  schedule:
-    # Her 10 dakikada bir çalışır
-    - cron: '*/3 * * * *'
-  workflow_dispatch: # Manuel test etmek için bu şart!
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
-jobs:
-  scrape_job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: API'yi Tetikle
-        run: |
-          curl -X GET "https://memeverse-gamma.vercel.app/api/cron/scrape"
+export async function GET() {
+  // Buraya ileride verileri otomatik çekecek kodlarını yazacaksın
+  console.log("GitHub Actions tetikledi!"); 
+  
+  return NextResponse.json({ 
+    message: "Cron calisti!",
+    timestamp: new Date().toISOString() 
+  });
+}
