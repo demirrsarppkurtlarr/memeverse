@@ -13,10 +13,11 @@ const mainNav = [
 ];
 
 const categoryNav = [
-  { href: "/categories/global", label: "Global", icon: Globe },
-  { href: "/categories/turkish", label: "Turkish 🇹🇷", icon: Flag },
-  { href: "/categories/trending", label: "Trending 🔥", icon: TrendingUp },
-  { href: "/categories/classic", label: "Classic 💾", icon: Star },
+  { href: "/?tag=funny", label: "Funny", icon: Globe },
+  { href: "/?tag=gaming", label: "Gaming", icon: TrendingUp },
+  { href: "/?tag=anime", label: "Anime", icon: Star },
+  { href: "/?tag=relatable", label: "Relatable", icon: Clock },
+  { href: "/?tag=dark", label: "Dark", icon: Flag },
 ];
 
 const contentNav = [

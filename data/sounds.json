@@ -1,0 +1,77 @@
+{
+  "items": [
+    {
+      "id": "sfx-vine-boom",
+      "title": "Vine Boom",
+      "description": "Iconic dramatic bass hit.",
+      "url": "https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3",
+      "duration_ms": 1200,
+      "file_size": null,
+      "category": "meme",
+      "tags": ["vine", "boom", "bass", "meme"],
+      "language": "en",
+      "plays": 0,
+      "likes": 0,
+      "is_active": true,
+      "is_featured": true,
+      "uploaded_by": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "sfx-bruh",
+      "title": "Bruh Moment",
+      "description": "Classic bruh reaction.",
+      "url": "https://assets.mixkit.co/active_storage/sfx/215/215-preview.mp3",
+      "duration_ms": 900,
+      "file_size": null,
+      "category": "funny",
+      "tags": ["bruh", "reaction", "meme"],
+      "language": "en",
+      "plays": 0,
+      "likes": 0,
+      "is_active": true,
+      "is_featured": true,
+      "uploaded_by": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "sfx-error",
+      "title": "Windows Error",
+      "description": "Retro error notification.",
+      "url": "https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3",
+      "duration_ms": 700,
+      "file_size": null,
+      "category": "classic",
+      "tags": ["windows", "error", "retro"],
+      "language": "en",
+      "plays": 0,
+      "likes": 0,
+      "is_active": true,
+      "is_featured": false,
+      "uploaded_by": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "sfx-anime-wow",
+      "title": "Anime Wow",
+      "description": "Bright anime reaction hit.",
+      "url": "https://assets.mixkit.co/active_storage/sfx/2217/2217-preview.mp3",
+      "duration_ms": 1100,
+      "file_size": null,
+      "category": "anime",
+      "tags": ["anime", "wow", "reaction"],
+      "language": "en",
+      "plays": 0,
+      "likes": 0,
+      "is_active": true,
+      "is_featured": true,
+      "uploaded_by": null,
+      "created_at": "2026-01-01T00:00:00.000Z",
+      "updated_at": "2026-01-01T00:00:00.000Z"
+    }
+  ]
+}
+

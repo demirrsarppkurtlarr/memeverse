@@ -4,47 +4,39 @@ import { useCallback, useRef, useState } from "react";
 import { Volume2, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-type Preset = { id: string; name: string; frequency: number; duration: number; type: "sine" | "square" | "triangle" };
+type Preset = { id: string; name: string; url: string };
 
 const PRESETS: Preset[] = [
-  { id: "blip", name: "Blip", frequency: 880, duration: 0.07, type: "sine" },
-  { id: "bonk", name: "Bonk", frequency: 220, duration: 0.12, type: "square" },
-  { id: "rising", name: "Rise", frequency: 440, duration: 0.18, type: "triangle" },
-  { id: "ding", name: "Ding", frequency: 1200, duration: 0.2, type: "sine" },
-  { id: "bass", name: "Bass", frequency: 110, duration: 0.25, type: "triangle" },
-  { id: "retro", name: "8-bit", frequency: 523, duration: 0.08, type: "square" },
+  { id: "vine-boom", name: "Vine Boom", url: "https://assets.mixkit.co/active_storage/sfx/212/212-preview.mp3" },
+  { id: "bruh", name: "Bruh", url: "https://assets.mixkit.co/active_storage/sfx/215/215-preview.mp3" },
+  { id: "error", name: "Windows Error", url: "https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" },
+  { id: "anime-wow", name: "Anime Wow", url: "https://assets.mixkit.co/active_storage/sfx/2217/2217-preview.mp3" },
 ];
-
-function playTone(ctx: AudioContext, preset: Preset) {
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = preset.type;
-  osc.frequency.setValueAtTime(preset.frequency, ctx.currentTime);
-  gain.gain.setValueAtTime(0.0001, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.2, ctx.currentTime + 0.02);
-  gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + preset.duration);
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.start(ctx.currentTime);
-  osc.stop(ctx.currentTime + preset.duration + 0.05);
-}
 
 export function SfxPanel() {
   const [open, setOpen] = useState(false);
-  const ctxRef = useRef<AudioContext | null>(null);
+  const [volume, setVolume] = useState(0.7);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const play = useCallback((preset: Preset) => {
     try {
-      const Ctx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!Ctx) return;
-      if (!ctxRef.current || ctxRef.current.state === "closed") {
-        ctxRef.current = new Ctx();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
       }
-      const ctx = ctxRef.current;
-      if (ctx.state === "suspended") void ctx.resume();
-      playTone(ctx, preset);
+      const audio = new Audio(preset.url);
+      audio.volume = volume;
+      audioRef.current = audio;
+      void audio.play();
     } catch {
       /* no audio */
+    }
+  }, [volume]);
+
+  const stopAll = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
   }, []);
 
@@ -82,9 +74,22 @@ export function SfxPanel() {
               <X size={18} />
             </button>
           </div>
-          <p className="text-[11px] text-white/35 mb-3 leading-snug">
-            Built-in tones (Web Audio). Tap to play — works offline.
-          </p>
+          <p className="text-[11px] text-white/35 mb-3 leading-snug">Meme reaction sounds. Tap to play instantly.</p>
+          <div className="mb-3">
+            <div className="flex items-center justify-between text-[11px] text-white/45 mb-1">
+              <span>Volume</span>
+              <span>{Math.round(volume * 100)}%</span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={1}
+              step={0.05}
+              value={volume}
+              onChange={(e) => setVolume(Number(e.target.value))}
+              className="w-full accent-brand-500"
+            />
+          </div>
           <div className="grid grid-cols-2 gap-2">
             {PRESETS.map((p) => (
               <button
@@ -97,6 +102,13 @@ export function SfxPanel() {
               </button>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={stopAll}
+            className="w-full mt-3 py-2 px-2 rounded-xl text-xs font-medium bg-white/5 border border-white/8 hover:bg-white/10 transition-all"
+          >
+            Stop
+          </button>
         </div>
       )}
     </>

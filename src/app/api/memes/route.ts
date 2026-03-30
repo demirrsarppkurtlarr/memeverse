@@ -5,6 +5,33 @@ import type { Meme, MediaType, MemeCategory, ContentSource } from "@/types";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const ADVANCED_TAG_RULES: Array<{ tag: string; patterns: RegExp[] }> = [
+  { tag: "funny", patterns: [/lol|haha|lmao|funny|joke|humou?r|meme/gi] },
+  { tag: "gaming", patterns: [/game|gamer|steam|xbox|playstation|minecraft|fortnite|valorant|cs2/gi] },
+  { tag: "anime", patterns: [/anime|manga|waifu|otaku|naruto|one piece|jojo|goku/gi] },
+  { tag: "relatable", patterns: [/relatable|mood|same|me irl|me_irl|too real|accurate/gi] },
+  { tag: "dark", patterns: [/dark|cursed|edgy|doom|nihil|void|hell|pain/gi] },
+];
+
+function deriveAdvancedTags(title: string, currentTags: string[]): string[] {
+  const found = new Set<string>((currentTags || []).map((t) => t.toLowerCase()));
+  const source = `${title || ""} ${(currentTags || []).join(" ")}`;
+  for (const { tag, patterns } of ADVANCED_TAG_RULES) {
+    if (patterns.some((re) => re.test(source))) found.add(tag);
+  }
+  if (found.size === 0) found.add("funny");
+  return Array.from(found);
+}
+
+function deriveCategory(title: string, tags: string[], current: string): MemeCategory {
+  const c = (current || "").toLowerCase();
+  if (["global", "turkish", "trending", "classic", "nsfw"].includes(c)) return c as MemeCategory;
+  const t = new Set(tags);
+  if (/türk|turkiye|türkiye|türkçe/i.test(title)) return "turkish";
+  if (t.has("dark")) return "classic";
+  return "global";
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -12,6 +39,7 @@ export async function GET(request: NextRequest) {
     const pageSize = Math.min(100, Math.max(1, parseInt(searchParams.get("pageSize") || "24", 10)));
     const q = searchParams.get("q") || searchParams.get("search") || undefined;
     const tag = searchParams.get("tag") || undefined;
+    const category = searchParams.get("category") || undefined;
     const mediaType = searchParams.get("mediaType");
     const sort = (searchParams.get("sort") || "newest").toLowerCase();
 
@@ -36,6 +64,21 @@ export async function GET(request: NextRequest) {
 
     if (q) query = query.ilike("title", `%${q}%`);
     if (tag) query = query.contains("tags", [tag]);
+    if (category && category !== "all") {
+      const normalized = category.toLowerCase();
+      // Advanced category filter: map category selection to tag clusters.
+      if (normalized === "global") {
+        // no additional filter
+      } else if (["funny", "gaming", "anime", "relatable", "dark"].includes(normalized)) {
+        query = query.contains("tags", [normalized]);
+      } else if (normalized === "trending") {
+        query = query.gte("score", 1);
+      } else if (normalized === "classic") {
+        query = query.gte("likes", 1000);
+      } else if (normalized === "turkish") {
+        query = query.ilike("title", "%türk%");
+      }
+    }
     if (mediaType && mediaType !== "all") query = query.eq("media_type", mediaType);
 
     const from = (page - 1) * pageSize;
@@ -58,15 +101,10 @@ export async function GET(request: NextRequest) {
       const mediaTypeSafe: MediaType =
         media === "video" || media === "gif" || media === "image" ? media : "image";
 
-      const categoryRaw = (item?.category || "global").toString().toLowerCase();
-      const categorySafe: MemeCategory =
-        categoryRaw === "global" ||
-        categoryRaw === "turkish" ||
-        categoryRaw === "trending" ||
-        categoryRaw === "classic" ||
-        categoryRaw === "nsfw"
-          ? categoryRaw
-          : "global";
+      const titleSafe = item?.title?.toString?.() || "";
+      const rawTags = Array.isArray(item?.tags) ? item.tags.filter((t: unknown) => typeof t === "string") : [];
+      const tagsSafe = deriveAdvancedTags(titleSafe, rawTags);
+      const categorySafe = deriveCategory(titleSafe, tagsSafe, (item?.category || "").toString());
 
       const sourceRaw = (item?.source || "reddit").toString().toLowerCase();
       const sourceSafe: ContentSource =
@@ -79,7 +117,7 @@ export async function GET(request: NextRequest) {
 
       return {
         id: item?.id?.toString?.() || `meme-${from + index}`,
-        title: item?.title?.toString?.() || "",
+        title: titleSafe,
         description: item?.description?.toString?.() || null,
         url: item?.url?.toString?.() || "",
         thumbnail_url: item?.thumbnail_url?.toString?.() || null,
@@ -94,7 +132,7 @@ export async function GET(request: NextRequest) {
         author_name: item?.author_name?.toString?.() || null,
         category: categorySafe,
         language: item?.language?.toString?.() || "en",
-        tags: Array.isArray(item?.tags) ? item.tags.filter((t: unknown) => typeof t === "string") : [],
+        tags: tagsSafe,
         views: typeof item?.views === "number" ? item.views : 0,
         likes: typeof item?.likes === "number" ? item.likes : 0,
         shares: typeof item?.shares === "number" ? item.shares : 0,
