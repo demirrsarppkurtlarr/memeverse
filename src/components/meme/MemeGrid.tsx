@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { MemeCard } from "./MemeCard";
 import { SkeletonCard } from "@/components/ui/SkeletonCard";
 import { useMemes } from "@/hooks/useMemes";
@@ -20,12 +20,7 @@ function formatFetchError(err: unknown): string {
 }
 
 export function MemeGrid({ params }: MemeGridProps) {
-  const stableParams = useMemo(
-    () => params,
-    [params.category, params.mediaType, params.sort, params.search, params.tag, params.language, params.page, params.pageSize]
-  );
-  
-  const { memes, hasMore, isLoading, error, loadMore } = useMemes(stableParams);
+  const { memes, hasMore, isLoading, error, loadMore } = useMemes(params);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const every = Math.max(0, ADS_CONFIG.rules.inFeedEvery || 0);
 
@@ -90,20 +85,27 @@ export function MemeGrid({ params }: MemeGridProps) {
     <div>
       <div className="masonry">
         {memes.flatMap((meme, i) => {
-          // HATA ÖNLEME: meme veya meme.id undefined ise toString() hatasını önlemek için güvenli bir key oluşturuyoruz
-          const safeKey = meme?.id?.toString() || `meme-idx-${i}`;
-          
+          const safeKey = meme?.id?.toString?.() || i.toString();
+
+          // Null-safe shaping before passing into card renderer.
+          const safeMeme = {
+            ...meme,
+            id: meme?.id?.toString?.() || i.toString(),
+            title: meme?.title ?? "",
+            url: meme?.url ?? "",
+            tags: Array.isArray(meme?.tags) ? meme.tags : [],
+          };
+
           const blocks: React.ReactNode[] = [
             <div
               key={safeKey}
               className="masonry-item animate-fade-in"
               style={{ animationDelay: `${(i % 8) * 40}ms` }}
             >
-              <MemeCard meme={meme} priority={i < 4} />
+              <MemeCard meme={safeMeme} priority={i < 4} />
             </div>,
           ];
 
-          // Insert an in-feed ad after every N memes.
           if (every > 0 && (i + 1) % every === 0) {
             blocks.push(<AdInFeed key={`ad-${safeKey}-${i}`} index={i} />);
           }
