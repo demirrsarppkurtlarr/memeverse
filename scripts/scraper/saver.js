@@ -15,31 +15,36 @@ const supabase = createClient(
 
 const DATA_FILE = path.join(ROOT, "data", "memes.json");
 
+/**
+ * Güvenli ID oluşturucu: Boş gelme ihtimaline karşı fallback eklendi.
+ */
 function stableLmId(dedupeKey) {
-  return `lm_${dedupeKey || Math.random().toString(36).slice(2, 11)}`;
+  const safeKey = dedupeKey ? dedupeKey.toString() : Math.random().toString(36).substring(2);
+  return `lm_${safeKey}`;
 }
 
 async function saveMemes(incomingRanked) {
-  // Hata önleyici: incomingRanked dizi değilse durdur
   if (!Array.isArray(incomingRanked)) {
-    console.error("Hata: Gelen veriler dizi formatında değil.");
+    console.error("Hata: Gelen veriler bir dizi (array) değil.");
     return;
   }
 
+  // 1. Verileri Supabase Formatına Hazırla (Null-Safe Check)
   const records = incomingRanked.map((p) => {
-    // Tarih objesini güvenli oluştur
+    // Verilerin varlığını kontrol et, yoksa varsayılan değer ata
+    const title = p.title || "Untitled Meme";
+    const mediaUrl = p.mediaUrl || "";
     const timestamp = p.created_utc ? p.created_utc * 1000 : Date.now();
-    const safeDate = new Date(timestamp).toISOString();
 
     return {
       id: stableLmId(p.dedupeKey),
-      title: p.title || "Untitled Meme",
-      url: p.mediaUrl || "",
+      title: title,
+      url: mediaUrl,
       media_type: p.type || "image",
       source: p.subreddit || "reddit",
-      score: Number(p.score) || 1,
-      tags: Array.isArray(tagTitle(p.title)) ? tagTitle(p.title) : [],
-      created_at: safeDate,
+      score: Number(p.score) || 0,
+      tags: Array.isArray(tagTitle(title)) ? tagTitle(title) : [],
+      created_at: new Date(timestamp).toISOString(),
       reddit_url: p.permalink || "",
       upvotes: Number(p.ups) || 0,
       comments: Number(p.num_comments) || 0,
@@ -58,9 +63,9 @@ async function saveMemes(incomingRanked) {
 
     if (error) throw error;
 
-    logger.info(`Başarılı: ${records.length} kayıt işlendi.`);
+    logger.info(`Supabase Senkronizasyonu Başarılı: ${records.length} kayıt işlendi.`);
 
-    // Yerel dosya yazma işlemini de sağlama alalım
+    // Yerel Dosyayı Güncelle
     if (!fs.existsSync(path.join(ROOT, "data"))) {
         fs.mkdirSync(path.join(ROOT, "data"), { recursive: true });
     }
@@ -72,7 +77,7 @@ async function saveMemes(incomingRanked) {
     }, null, 2));
 
   } catch (error) {
-    console.error("Detaylı Hata:", error.message);
+    console.error("Kaydetme sırasında bir hata oluştu:", error.message);
   }
 }
 
