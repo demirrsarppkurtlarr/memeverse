@@ -6,7 +6,6 @@ import { useFilterStore } from "@/store";
 import { cn } from "@/lib/utils";
 import { TrendingUp, Clock, Star, Shuffle, Tag } from "lucide-react";
 import type { MemeCategory } from "@/types";
-import { MEME_TAG_LABELS } from "@/lib/memes/tagging";
 
 const SORTS = [
   { value: "trending" as const, label: "Trending", icon: TrendingUp },
@@ -22,6 +21,7 @@ const CATEGORIES: Array<{ value: MemeCategory | "all"; label: string; emoji: str
   { value: "trending", label: "Trending", emoji: "🔥" },
   { value: "classic", label: "Classic", emoji: "💾" },
 ];
+const DISCOVERY_CATEGORIES = ["funny", "gaming", "anime", "relatable", "dark"] as const;
 
 const MEDIA_TYPES: Array<{ value: "all" | "image" | "video" | "gif"; label: string }> = [
   { value: "all", label: "All" },
@@ -139,7 +139,7 @@ export function FilterBar() {
       <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pt-1">
         <span className="flex items-center gap-1 text-[11px] font-mono text-white/35 uppercase tracking-wider shrink-0">
           <Tag size={12} />
-          Tags
+          Categories
         </span>
         <button
           type="button"
@@ -149,9 +149,9 @@ export function FilterBar() {
             !activeTag ? "bg-white/15 border-white/25 text-white" : "border-white/10 text-white/45 hover:text-white"
           )}
         >
-          All tags
+          All
         </button>
-        {MEME_TAG_LABELS.map((tag) => (
+        {DISCOVERY_CATEGORIES.map((tag) => (
           <button
             key={tag}
             type="button"

@@ -47,6 +47,14 @@ export function Navbar() {
           <SearchCombobox />
         </div>
 
+        {/* Main nav */}
+        <nav className="hidden md:flex items-center gap-1 mr-2">
+          <Link href="/" className={cn("px-3 py-2 rounded-lg text-sm transition-colors", pathname === "/" ? "text-white bg-white/8" : "text-white/60 hover:text-white hover:bg-white/5")}>Home</Link>
+          <Link href="/trending" className={cn("px-3 py-2 rounded-lg text-sm transition-colors", pathname === "/trending" ? "text-white bg-white/8" : "text-white/60 hover:text-white hover:bg-white/5")}>Trending</Link>
+          <Link href="/categories" className={cn("px-3 py-2 rounded-lg text-sm transition-colors", pathname.startsWith("/categories") ? "text-white bg-white/8" : "text-white/60 hover:text-white hover:bg-white/5")}>Categories</Link>
+          <Link href="/profile?tab=favorites" className={cn("px-3 py-2 rounded-lg text-sm transition-colors", pathname === "/profile" ? "text-white bg-white/8" : "text-white/60 hover:text-white hover:bg-white/5")}>Favorites</Link>
+        </nav>
+
         {/* Nav Actions */}
         <div className="flex items-center gap-2 ml-auto">
           {user ? (
@@ -129,7 +137,7 @@ export function Navbar() {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search..."
+                placeholder="Search memes..."
                 className="input-field pl-10 py-2 text-sm"
               />
             </div>

@@ -1,7 +1,7 @@
 "use client";
 
 export default function Error({
-  error,
+  error: _error,
   reset,
 }: {
   error: Error & { digest?: string };
@@ -9,13 +9,12 @@ export default function Error({
 }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] px-4 text-center">
-      <span className="text-6xl mb-4">💥</span>
-      <h1 className="font-display text-4xl tracking-wider mb-2 text-red-400">SOMETHING BROKE</h1>
-      <p className="text-white/40 text-sm mb-2 max-w-sm">{error.message || "An unexpected error occurred"}</p>
-      {error.digest && (
-        <p className="text-white/20 text-xs font-mono mb-6">Error ID: {error.digest}</p>
-      )}
-      <button onClick={reset} className="btn-brand">Try Again</button>
+      <span className="text-6xl mb-4">😵</span>
+      <h1 className="font-display text-4xl tracking-wider mb-2 text-white">Oops!</h1>
+      <p className="text-white/50 text-sm mb-6 max-w-sm">
+        We couldn't load this page right now. Please try again.
+      </p>
+      <button onClick={reset} className="btn-brand">Refresh</button>
     </div>
   );
 }

@@ -51,7 +51,7 @@ export function SearchCombobox({ className }: { className?: string }) {
           value={query}
           onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
           onFocus={() => setOpen(true)}
-          placeholder="Search memes, sounds, tags..."
+          placeholder="Search memes..."
           className="input-field pl-10 pr-8 py-2 text-sm h-10"
         />
         {query && (

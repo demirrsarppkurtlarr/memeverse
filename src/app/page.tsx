@@ -17,18 +17,14 @@ function HeroBanner() {
 
       <div className="relative max-w-2xl">
         <div className="flex items-center gap-2 mb-3">
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-soft" />
-          <span className="text-xs font-mono text-green-400/70 tracking-wider">LIVE FEED</span>
-          <span className="text-xs text-white/20">· Updated every 10 min</span>
+          <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse-soft" />
+          <span className="text-xs font-mono text-brand-300/80 tracking-wider">MEMEVERSE</span>
         </div>
         <h1 className="font-display text-5xl sm:text-6xl tracking-wider mb-2">
-          <span className="gradient-text">FRESH</span>{" "}
-          <span className="text-white">MEMES</span>
+          <span className="gradient-text">MemeVerse</span>
         </h1>
         <p className="text-white/40 text-sm max-w-md">
-          Local platform: four subreddits, smart tags, ranked feed — runs fully on your machine. Run{" "}
-          <code className="text-brand-400/80 text-xs">npm run scraper</code> alongside{" "}
-          <code className="text-brand-400/80 text-xs">npm run dev</code>.
+          Discover trending memes instantly
         </p>
 
         {/* Stats pills */}
@@ -39,7 +35,7 @@ function HeroBanner() {
           </div>
           <div className="flex items-center gap-1.5 glass px-3 py-1.5 rounded-full text-xs text-white/60">
             <Globe size={12} className="text-blue-400" />
-            r/memes · r/dankmemes · r/funny · r/wholesomememes
+            Global meme feed
           </div>
           <div className="flex items-center gap-1.5 glass px-3 py-1.5 rounded-full text-xs text-white/60">
             <Zap size={12} className="text-yellow-400" />

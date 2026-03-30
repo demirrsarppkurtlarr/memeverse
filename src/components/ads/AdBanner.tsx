@@ -39,9 +39,8 @@ export function AdBanner({ slotId = "top-banner", className, showPlaceholder = t
           )}
         >
           {!enabled ? (
-            <div className="h-[72px] flex items-center justify-center text-xs text-white/30 font-mono">
-              Ad slot ready. Paste your {ADS_CONFIG.provider} banner script in{" "}
-              <code className="px-1 text-white/40">src/lib/ads/config.ts</code>
+            <div className="h-[72px] flex items-center justify-center text-xs text-white/35 font-medium">
+              Sponsored
             </div>
           ) : (
             <AdScriptLoader id={`banner:${slotId}`} src={cfg.scriptSrc} inlineJs={cfg.inlineJs} />

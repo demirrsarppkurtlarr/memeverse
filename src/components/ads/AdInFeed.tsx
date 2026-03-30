@@ -31,12 +31,8 @@ export function AdInFeed({ index, className, showPlaceholder = true }: AdInFeedP
       >
         {!enabled ? (
           <div className="px-4 py-6 text-center">
-            <p className="text-[11px] font-mono text-white/35 uppercase tracking-wider mb-2">
-              Sponsored slot
-            </p>
-            <p className="text-xs text-white/30">
-              Paste banner script in{" "}
-              <code className="text-white/40">src/lib/ads/config.ts</code>
+            <p className="text-[11px] font-medium text-white/40 uppercase tracking-wider">
+              Sponsored
             </p>
           </div>
         ) : (

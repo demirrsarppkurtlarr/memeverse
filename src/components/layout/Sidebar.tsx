@@ -2,10 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Home, TrendingUp, Globe, Flag, Star, Music2,
-  Upload, Bookmark, User, Hash, Clock
-} from "lucide-react";
+import { Home, TrendingUp, Globe, Flag, Star, Music2, Upload, Bookmark, User, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuthStore } from "@/store";
 
@@ -128,12 +125,10 @@ export function Sidebar() {
 
       {/* Footer */}
       <div className="mt-auto px-6 py-4">
-        <p className="text-[10px] text-white/20 font-mono">
-          Auto-updated every 10 min
-        </p>
+        <p className="text-[10px] text-white/20 font-mono">Fresh picks for you</p>
         <div className="flex items-center gap-1.5 mt-1">
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-soft" />
-          <span className="text-[10px] text-green-400/70 font-mono">LIVE</span>
+          <span className="text-[10px] text-green-400/70 font-mono">ONLINE</span>
         </div>
       </div>
     </aside>

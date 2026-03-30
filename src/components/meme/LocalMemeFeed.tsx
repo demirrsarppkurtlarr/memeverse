@@ -80,9 +80,7 @@ export function LocalMemeFeed() {
       <div className="flex flex-col items-center gap-3 py-20 px-4 text-center">
         <span className="text-5xl">📭</span>
         <p className="text-white/50 text-sm max-w-md">
-          No memes yet. Run{" "}
-          <code className="text-brand-400/90 text-xs">npm run scraper</code> in
-          a terminal, then refresh this page.
+          No memes found. Try refreshing or check back later.
         </p>
       </div>
     );

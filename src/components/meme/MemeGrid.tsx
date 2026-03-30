@@ -14,9 +14,9 @@ interface MemeGridProps {
 }
 
 function formatFetchError(err: unknown): string {
-  if (err instanceof Error) return err.message;
+  if (err instanceof Error) return err.message || "Couldn't load memes right now.";
   if (typeof err === "string") return err;
-  return "Failed to load memes.";
+  return "Couldn't load memes right now.";
 }
 
 export function MemeGrid({ params }: MemeGridProps) {
@@ -66,7 +66,7 @@ export function MemeGrid({ params }: MemeGridProps) {
         <p className="text-white/50 text-sm max-w-md">{formatFetchError(error)}</p>
         <button onClick={() => window.location.reload()}
           className="btn-ghost flex items-center gap-2 text-sm">
-          <RefreshCw size={14} /> Retry
+          <RefreshCw size={14} /> Try again
         </button>
       </div>
     );
@@ -76,7 +76,7 @@ export function MemeGrid({ params }: MemeGridProps) {
     return (
       <div className="flex flex-col items-center gap-4 py-20 text-center">
         <span className="text-6xl">🤷</span>
-        <p className="text-white/50 text-sm">No memes found. Try a different filter!</p>
+        <p className="text-white/50 text-sm">No memes found. Try refreshing or check back later.</p>
       </div>
     );
   }
