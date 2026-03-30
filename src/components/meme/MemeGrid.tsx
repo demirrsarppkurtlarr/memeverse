@@ -1,0 +1,131 @@
+"use client";
+
+import { useEffect, useRef, useCallback, useMemo } from "react";
+import { MemeCard } from "./MemeCard";
+import { SkeletonCard } from "@/components/ui/SkeletonCard";
+import { useMemes } from "@/hooks/useMemes";
+import type { MemesQueryParams } from "@/types";
+import { Frown, RefreshCw } from "lucide-react";
+import { AdInFeed } from "@/components/ads/AdInFeed";
+import { ADS_CONFIG } from "@/lib/ads/config";
+
+interface MemeGridProps {
+  params: MemesQueryParams;
+}
+
+function formatFetchError(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (typeof err === "string") return err;
+  return "Failed to load memes.";
+}
+
+export function MemeGrid({ params }: MemeGridProps) {
+  const stableParams = useMemo(
+    () => params,
+    [params.category, params.mediaType, params.sort, params.search, params.tag, params.language, params.page, params.pageSize]
+  );
+  const { memes, hasMore, isLoading, error, loadMore } = useMemes(stableParams);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const every = Math.max(0, ADS_CONFIG.rules.inFeedEvery || 0);
+
+  const handleIntersect = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const entry = entries[0];
+      if (entry.isIntersecting && hasMore && !isLoading) {
+        loadMore();
+      }
+    },
+    [hasMore, isLoading, loadMore]
+  );
+
+  useEffect(() => {
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(handleIntersect, {
+      rootMargin: "300px",
+    });
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [handleIntersect]);
+
+  if (isLoading && memes.length === 0) {
+    return (
+      <div className="p-4">
+        <div className="masonry">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="masonry-item">
+              <SkeletonCard />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-20 text-center">
+        <Frown size={48} className="text-white/20" />
+        <p className="text-white/50 text-sm max-w-md">{formatFetchError(error)}</p>
+        <button onClick={() => window.location.reload()}
+          className="btn-ghost flex items-center gap-2 text-sm">
+          <RefreshCw size={14} /> Retry
+        </button>
+      </div>
+    );
+  }
+
+  if (!isLoading && memes.length === 0) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-20 text-center">
+        <span className="text-6xl">🤷</span>
+        <p className="text-white/50 text-sm">No memes found. Try a different filter!</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="masonry">
+        {memes.flatMap((meme, i) => {
+          const blocks: React.ReactNode[] = [
+            <div
+              key={meme.id}
+              className="masonry-item animate-fade-in"
+              style={{ animationDelay: `${(i % 8) * 40}ms` }}
+            >
+              <MemeCard meme={meme} priority={i < 4} />
+            </div>,
+          ];
+
+          // Insert an in-feed ad after every N memes (smart rule).
+          if (every > 0 && (i + 1) % every === 0) {
+            blocks.push(<AdInFeed key={`ad-${i}`} index={i} />);
+          }
+          return blocks;
+        })}
+      </div>
+
+      {isLoading && memes.length > 0 && (
+        <div className="masonry mt-0">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="masonry-item">
+              <SkeletonCard />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Infinite scroll sentinel */}
+      <div ref={sentinelRef} className="scroll-sentinel" />
+
+      {/* End of content */}
+      {!hasMore && memes.length > 0 && (
+        <div className="text-center py-12">
+          <p className="text-white/25 text-sm font-mono">— end of feed —</p>
+        </div>
+      )}
+    </div>
+  );
+}
