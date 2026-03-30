@@ -20,6 +20,6 @@ async function main() {
 }
 
 main();
-cron.schedule("*/10 * * * *", main);
+cron.schedule("*/1 * * * *", main);
 
 console.log("Scraper running: immediate + every 10 minutes (*/10 * * * *). Press Ctrl+C to stop.");
